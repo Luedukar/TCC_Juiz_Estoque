@@ -1,0 +1,44 @@
+----------------------------|---------|----------|---------|---------|-------------------
+File                        | % Stmts | % Branch | % Funcs | % Lines | Uncovered Line #s 
+----------------------------|---------|----------|---------|---------|-------------------
+All files                   |     100 |    95.87 |     100 |     100 |                   
+ src                        |     100 |    77.77 |     100 |     100 |                   
+  app.module.ts             |     100 |      100 |     100 |     100 |                   
+  app.setup.ts              |     100 |    71.42 |     100 |     100 | 11-12             
+ src/auth                   |     100 |    96.47 |     100 |     100 |                   
+  auth.controller.ts        |     100 |      100 |     100 |     100 |                   
+  auth.dto.ts               |     100 |       75 |     100 |     100 | 5                 
+  auth.module.ts            |     100 |      100 |     100 |     100 |                   
+  auth.service.ts           |     100 |    94.44 |     100 |     100 | 130               
+  current-user.decorator.ts |     100 |      100 |     100 |     100 |                   
+  jwt-auth.guard.ts         |     100 |      100 |     100 |     100 |                   
+  public.decorator.ts       |     100 |      100 |     100 |     100 |                   
+  roles.decorator.ts        |     100 |      100 |     100 |     100 |                   
+  roles.guard.ts            |     100 |      100 |     100 |     100 |                   
+ src/common                 |     100 |    96.93 |     100 |     100 |                   
+  all-exceptions.filter.ts  |     100 |    95.65 |     100 |     100 | 74-76             
+  app-error.ts              |     100 |      100 |     100 |     100 |                   
+  pg-errors.ts              |     100 |      100 |     100 |     100 |                   
+  request-context.ts        |     100 |     87.5 |     100 |     100 | 23                
+  types.ts                  |     100 |      100 |     100 |     100 |                   
+ src/config                 |     100 |    93.33 |     100 |     100 |                   
+  env.ts                    |     100 |    93.33 |     100 |     100 | 30-39             
+ src/database               |     100 |     87.5 |     100 |     100 |                   
+  database.module.ts        |     100 |      100 |     100 |     100 |                   
+  database.service.ts       |     100 |     87.5 |     100 |     100 | 17,47             
+ src/health                 |     100 |      100 |     100 |     100 |                   
+  health.controller.ts      |     100 |      100 |     100 |     100 |                   
+ src/stock                  |     100 |    97.52 |     100 |     100 |                   
+  stock-query.service.ts    |     100 |     92.3 |     100 |     100 | 30-31             
+  stock.controller.ts       |     100 |      100 |     100 |     100 |                   
+  stock.dto.ts              |     100 |       90 |     100 |     100 | 16                
+  stock.mapper.ts           |     100 |      100 |     100 |     100 |                   
+  stock.module.ts           |     100 |      100 |     100 |     100 |                   
+  stock.service.ts          |     100 |      100 |     100 |     100 |                   
+----------------------------|---------|----------|---------|---------|-------------------
+
+Test Suites: 10 passed, 10 total
+Tests:       324 passed, 324 total
+Snapshots:   0 total
+Time:        13.792 s
+Ran all test suites.

@@ -1,0 +1,83 @@
+erDiagram
+    USERS ||--o{ REFRESH_TOKENS : "possui sessões"
+    USERS ||--o{ STOCK_MOVEMENTS : "registra"
+    USERS ||--o{ AUDIT_LOG : "executa"
+    PRODUCTS ||--o{ STOCK_MOVEMENTS : "movimenta"
+    SUPPLIERS ||--o{ STOCK_MOVEMENTS : "origem (opcional)"
+    PRODUCTS ||--o{ PRODUCT_SUPPLIERS : "é fornecido por"
+    SUPPLIERS ||--o{ PRODUCT_SUPPLIERS : "fornece"
+    STOCK_MOVEMENTS |o--o| STOCK_MOVEMENTS : "estorna (1:1)"
+
+    USERS {
+        uuid id PK
+        varchar name
+        citext email UK
+        text password_hash
+        user_role role "GERENTE | ESTOQUISTA"
+        boolean is_active
+        timestamptz last_login_at
+        timestamptz created_at
+    }
+    REFRESH_TOKENS {
+        uuid id PK
+        uuid user_id FK
+        text token_hash UK
+        timestamptz expires_at
+        timestamptz revoked_at
+    }
+    SUPPLIERS {
+        uuid id PK
+        varchar name
+        varchar tax_id UK "CNPJ/CPF"
+        varchar contact_name
+        citext email
+        varchar phone
+        boolean is_active
+    }
+    PRODUCTS {
+        uuid id PK
+        citext sku UK
+        varchar barcode UK "EAN/UPC/GTIN"
+        varchar name
+        varchar unit
+        numeric cost_price "somente GERENTE"
+        numeric sale_price
+        numeric safety_stock "estoque de segurança"
+        numeric current_stock "mantido por trigger"
+        boolean is_active
+    }
+    PRODUCT_SUPPLIERS {
+        uuid product_id PK, FK
+        uuid supplier_id PK, FK
+        varchar supplier_sku
+        numeric last_cost "somente GERENTE"
+        int lead_time_days
+        boolean is_preferred
+    }
+    STOCK_MOVEMENTS {
+        bigint id PK "imutável"
+        uuid product_id FK
+        movement_type type "ENTRADA | SAIDA"
+        movement_reason reason
+        numeric quantity
+        numeric signed_quantity "gerada"
+        numeric balance_before "trigger"
+        numeric balance_after "trigger"
+        numeric unit_cost "somente GERENTE"
+        uuid supplier_id FK
+        varchar document_ref
+        bigint reversal_of_id FK, UK
+        uuid idempotency_key UK
+        uuid user_id FK
+        timestamptz created_at
+    }
+    AUDIT_LOG {
+        bigint id PK "imutável"
+        uuid user_id
+        text action
+        text entity
+        text entity_id
+        jsonb old_data
+        jsonb new_data
+        timestamptz created_at
+    }

@@ -1,0 +1,74 @@
+@import "tailwindcss";
+
+/*
+ * Identidade: galpão e etiqueta de gôndola.
+ * Concreto (fundo), papel de etiqueta (superfícies), tinta (texto), azul de palete (ação)
+ * e as cores de sinalização de estoque: vermelho, âmbar e verde.
+ */
+@theme {
+  --font-sans: "IBM Plex Sans Variable", ui-sans-serif, system-ui, sans-serif;
+  --font-mono: "IBM Plex Mono", ui-monospace, SFMono-Regular, monospace;
+
+  --color-concrete: #e3e7eb;
+  --color-concrete-deep: #cfd6dd;
+  --color-paper: #fbfcfd;
+  --color-ink: #15202b;
+  --color-ink-soft: #4b5967;
+  --color-line: #b5bfc9;
+
+  --color-pallet: #0a4c9a;
+  --color-pallet-dark: #083b78;
+  --color-pallet-wash: #dbe7f6;
+
+  --color-tag-red: #b7242a;
+  --color-tag-red-fill: #c93a3f;
+  --color-caution: #8a5a00;
+  --color-caution-fill: #e9a700;
+  --color-shelf-green: #1b6a43;
+  --color-shelf-green-fill: #2b8a5a;
+}
+
+html {
+  background: var(--color-concrete);
+  color: var(--color-ink);
+  font-family: var(--font-sans);
+  -webkit-text-size-adjust: 100%;
+}
+
+body {
+  margin: 0;
+  min-height: 100dvh;
+}
+
+:focus-visible {
+  outline: 3px solid var(--color-pallet);
+  outline-offset: 2px;
+}
+
+button,
+[role="button"],
+select,
+summary {
+  cursor: pointer;
+}
+
+button:disabled {
+  cursor: not-allowed;
+}
+
+/* O saldo "carimba" quando uma movimentação é registrada: movimento que responde a uma ação. */
+@media (prefers-reduced-motion: no-preference) {
+  @keyframes stamp {
+    0% {
+      opacity: 0.15;
+      transform: translateY(-6px);
+    }
+    100% {
+      opacity: 1;
+      transform: none;
+    }
+  }
+  .stamp {
+    animation: stamp 280ms ease-out;
+  }
+}
